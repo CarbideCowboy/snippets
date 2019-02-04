@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+echo "You're wife loves you more than you'll ever be able to imagine."
+
+read fileN
+
+pat=$(pwd)
+
+cp $pat/$fileN $pat/file.md
+pandoc $pat/file.md -o $pat/$fileN.pdf
+FUCK=$?
+if [ $FUCK -eq 0 ]; then
+	mupdf $pat/$fileN.pdf
+else
+	echo FUCK
+fi
+rm $pat/file.md
